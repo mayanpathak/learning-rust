@@ -175,48 +175,48 @@
 
 
 
-// pub struct TextIndexer<'a> {
-//     text: &'a str,
-//     words: Vec<&'a str>,
-// }
+pub struct TextIndexer<'a> {
+    text: &'a str,
+    words: Vec<&'a str>,
+}
 
-// impl<'a> TextIndexer<'a> {
-//     pub fn new(text: &'a str) -> Self {
-//         Self { text, words: Vec::new() }
-//     }
+impl<'a> TextIndexer<'a> {
+    pub fn new(text: &'a str) -> Self {
+        Self { text, words: Vec::new() }
+    }
 
-//     pub fn index_words(&mut self) {
-//         self.words = self.text.split_whitespace().collect();
-//     }
+    pub fn index_words(&mut self) {
+        self.words = self.text.split_whitespace().collect();
+    }
 
-//     pub fn words(&self) -> &Vec<&'a str> {
-//         &self.words
-//     }
-// }
+    pub fn words(&self) -> &Vec<&'a str> {
+        &self.words
+    }
+}
 
-// fn main() {
-//     let text = "Rust makes lifetimes explicit and safe".to_string();
-//     let mut indexer = TextIndexer::new(&text); // borrow text
+fn main() {
+    let text = "Rust makes lifetimes explicit and safe".to_string();
+    let mut indexer = TextIndexer::new(&text); // borrow text
 
-//     indexer.index_words();
+    indexer.index_words();
 
-//     for word in indexer.words() {
-//         println!("{}", word);
-//     }
-// }
-
-
-// // 
-
-
-fn into(x:i32, y:i32)->(i32){
-    x * y
+    for word in indexer.words() {
+        println!("{}", word);
+    }
 }
 
 
-fn main (){
-    let x = 5;
-    let y = 10;
-    let result = into(x,y);
-    println!("The result of multiplying {} and {} is: {}", x, y, result);
-}
+// 
+
+
+// fn into(x:i32, y:i32)->(i32){
+//     x * y
+// }
+
+
+// fn main (){
+//     let x = 5;
+//     let y = 10;
+//     let result = into(x,y);
+//     println!("The result of multiplying {} and {} is: {}", x, y, result);
+// }
