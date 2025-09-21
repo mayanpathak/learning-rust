@@ -81,7 +81,7 @@
 
 
 
-#[repr(u16)]
+#[repr(u16)]  // control how the enum is laid out for FFI or stable discriminants
 enum HttpStatus {
     ok = 200,
     NotFound = 404,
@@ -94,3 +94,5 @@ fn main (){
     let code: u16 = s as u16;
     println!("HTTP Status: {}", code);
 }
+
+//When to use: #[repr(...)] is useful for FFI or when you need numeric discriminants. Without repr, the compiler chooses representation.
