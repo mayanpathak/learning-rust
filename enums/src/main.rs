@@ -99,25 +99,50 @@
 
 
 
-use std::boxed::Box;
+// use std::boxed::Box;
 
-enum List{
-    Cons(i32, Box<List>),
-    Nil,
+// enum List{
+//     Cons(i32, Box<List>),
+//     Nil,
+// }
+
+// impl List{
+//     fn sum(&self)-> i32 {
+//         match self {
+//             List::Cons(head, tail) => head + tail.sum(),
+//             List::Nil => 0,
+//         }
+//     }
+// }
+
+
+// fn main (){
+//     let list = List::Cons(1, Box::new(List::Cons(2, Box::new(List::Cons(3,Box::new(List::Nil))))));
+//     println!("Sum: {}", list.sum());//6
+// }
+// //Key point: recursive variants must be Box, Rc, or another indirection type so the enum has finite size. Use Rc when sharing is needed.
+
+
+
+enum MaybeRef<'a, T> {
+    Borrowed(&'a T),
+    Owned(T),
 }
 
-impl List{
-    fn sum(&self)-> i32 {
-        match self {
-            List::Cons(head, tail) => head + tail.sum(),
-            List::Nil => 0,
+impl <'a, T> MaybeRef<'a, T>{
+    fn as_ref(&self)-> &T{
+        match self{
+            MaybeRef::Borrowed(r)=> r,
+            MaybeRef::Owned(t)=> t,
         }
     }
 }
 
-
 fn main (){
-    let list = List::Cons(1, Box::new(List::Cons(2, Box::new(List::Cons(3,Box::new(List::Nil))))));
-    println!("Sum: {}", list.sum());//6
+    let s = String::from("hello");
+    let borrowed = MaybeRef::Borrowed(&s);
+    let owned = MaybeRef::Owned(String::from("world"));
+
+    println!("borrowed: {}", borrowed.as_ref());
+    println!("owned: {}", owned.as_ref());  
 }
-//Key point: recursive variants must be Box, Rc, or another indirection type so the enum has finite size. Use Rc when sharing is needed.
