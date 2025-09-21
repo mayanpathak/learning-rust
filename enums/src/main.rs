@@ -259,44 +259,44 @@
 // }
 
 
-fn main() {
-    use Connection::*;
+// fn main() {
+//     use Connection::*;
 
-    // Start disconnected
-    let mut conn = Disconnected;
+//     // Start disconnected
+//     let mut conn = Disconnected;
 
-    for _ in 0..7 {
-        println!("Current state: {:?}", conn);
-        conn = conn.next(); // advance to next state
-    }
+//     for _ in 0..7 {
+//         println!("Current state: {:?}", conn);
+//         conn = conn.next(); // advance to next state
+//     }
 
-    // Example of staying connected
-    let mut connected = Connected { id: 42 };
-    connected = connected.next(); // prints message, stays connected
-    println!("Still connected: {:?}", connected);
-}
+//     // Example of staying connected
+//     let mut connected = Connected { id: 42 };
+//     connected = connected.next(); // prints message, stays connected
+//     println!("Still connected: {:?}", connected);
+// }
 
-#[derive(Debug)]
-enum Connection {
-    Disconnected,
-    Connecting { retries: u32 },
-    Connected { id: u64 },
-    Closed,
-}
+// #[derive(Debug)]
+// enum Connection {
+//     Disconnected,
+//     Connecting { retries: u32 },
+//     Connected { id: u64 },
+//     Closed,
+// }
 
-impl Connection {
-    fn next(self) -> Connection {
-        match self {
-            Connection::Disconnected => Connection::Connecting { retries: 0 },
-            Connection::Connecting { retries } if retries < 3 => {
-                Connection::Connecting { retries: retries + 1 }
-            }
-            Connection::Connecting { .. } => Connection::Closed,
-            Connection::Connected { id } => {
-                println!("Already connected as {}", id);
-                Connection::Connected { id }
-            }
-            Connection::Closed => Connection::Disconnected,
-        }
-    }
-}
+// impl Connection {
+//     fn next(self) -> Connection {
+//         match self {
+//             Connection::Disconnected => Connection::Connecting { retries: 0 },
+//             Connection::Connecting { retries } if retries < 3 => {
+//                 Connection::Connecting { retries: retries + 1 }
+//             }
+//             Connection::Connecting { .. } => Connection::Closed,
+//             Connection::Connected { id } => {
+//                 println!("Already connected as {}", id);
+//                 Connection::Connected { id }
+//             }
+//             Connection::Closed => Connection::Disconnected,
+//         }
+//     }
+// }
