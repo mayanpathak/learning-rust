@@ -81,18 +81,43 @@
 
 
 
-#[repr(u16)]  // control how the enum is laid out for FFI or stable discriminants
-enum HttpStatus {
-    ok = 200,
-    NotFound = 404,
-    InternalServerError = 500,
+// #[repr(u16)]  // control how the enum is laid out for FFI or stable discriminants
+// enum HttpStatus {
+//     ok = 200,
+//     NotFound = 404,
+//     InternalServerError = 500,
 
-}
+// }
 
-fn main (){
-    let s = HttpStatus::NotFound;
-    let code: u16 = s as u16;
-    println!("HTTP Status: {}", code);
-}
+// fn main (){
+//     let s = HttpStatus::NotFound;
+//     let code: u16 = s as u16;
+//     println!("HTTP Status: {}", code);
+// }
 
 //When to use: #[repr(...)] is useful for FFI or when you need numeric discriminants. Without repr, the compiler chooses representation.
+
+
+
+use std::boxed::Box;
+
+enum List{
+    Cons(i32, Box<List>),
+    Nil,
+}
+
+impl List{
+    fn sum(&self)-> i32 {
+        match self {
+            List::Cons(head, tail) => head + tail.sum(),
+            List::Nil => 0,
+        }
+    }
+}
+
+
+fn main (){
+    let list = List::Cons(1, Box::new(List::Cons(2, Box::new(List::Cons(3,Box::new(List::Nil))))));
+    println!("Sum: {}", list.sum());//6
+}
+//Key point: recursive variants must be Box, Rc, or another indirection type so the enum has finite size. Use Rc when sharing is needed.
