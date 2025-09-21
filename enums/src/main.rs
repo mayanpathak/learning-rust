@@ -160,72 +160,100 @@
 // }
 
 
-// main.rs
-#[derive(Debug)]
-enum Token { Number(i32), Ident(String), Eof }
+// // main.rs
+// #[derive(Debug)]
+// enum Token { Number(i32), Ident(String), Eof }
 
-// 1) Original — takes ownership of the Token
-fn describe_owned(tok: Token) {
-    match tok {
-        Token::Number(n @ 1..=10) => println!("Small number: {}", n),
-        Token::Number(n) if n % 2 == 0 => println!("Even number: {}", n),
-        Token::Ident(ref s) => println!("Identifier: {}", s),
-        Token::Eof => println!("End"),
-        _ => println!("Other"),
-    }
-}
+// // 1) Original — takes ownership of the Token
+// fn describe_owned(tok: Token) {
+//     match tok {
+//         Token::Number(n @ 1..=10) => println!("Small number: {}", n),
+//         Token::Number(n) if n % 2 == 0 => println!("Even number: {}", n),
+//         Token::Ident(ref s) => println!("Identifier: {}", s),
+//         Token::Eof => println!("End"),
+//         _ => println!("Other"),
+//     }
+// }
 
-// 2) Reordered version (even-first)
-fn describe_reordered(tok: Token) {
-    match tok {
-        Token::Number(n) if n % 2 == 0 => println!("Even number: {}", n),
-        Token::Number(n @ 1..=10) => println!("Small number: {}", n),
-        Token::Ident(ref s) => println!("Identifier: {}", s),
-        Token::Eof => println!("End"),
-        _ => println!("Other"),
-    }
-}
+// // 2) Reordered version (even-first)
+// fn describe_reordered(tok: Token) {
+//     match tok {
+//         Token::Number(n) if n % 2 == 0 => println!("Even number: {}", n),
+//         Token::Number(n @ 1..=10) => println!("Small number: {}", n),
+//         Token::Ident(ref s) => println!("Identifier: {}", s),
+//         Token::Eof => println!("End"),
+//         _ => println!("Other"),
+//     }
+// }
 
-// 3) Borrowed version: accept &Token so we don't move the Token
-fn describe_borrowed(tok: &Token) {
-    match tok {
-        &Token::Number(n @ 1..=10) => println!("(borrowed) Small number: {}", n),
-        &Token::Number(n) if n % 2 == 0 => println!("(borrowed) Even number: {}", n),
-        &Token::Ident(ref s) => println!("(borrowed) Identifier: {}", s),
-        &Token::Eof => println!("(borrowed) End"),
-        _ => println!("(borrowed) Other"),
-    }
-}
+// // 3) Borrowed version: accept &Token so we don't move the Token
+// fn describe_borrowed(tok: &Token) {
+//     match tok {
+//         &Token::Number(n @ 1..=10) => println!("(borrowed) Small number: {}", n),
+//         &Token::Number(n) if n % 2 == 0 => println!("(borrowed) Even number: {}", n),
+//         &Token::Ident(ref s) => println!("(borrowed) Identifier: {}", s),
+//         &Token::Eof => println!("(borrowed) End"),
+//         _ => println!("(borrowed) Other"),
+//     }
+// }
 
-// 4) Mutate the inner String via &mut Token using ref mut
-fn mutate_ident(tok: &mut Token) {
-    match tok {
-        &mut Token::Ident(ref mut s) => {
-            s.push_str("_mutated");
-        }
-        _ => {}
-    }
-}
+// // 4) Mutate the inner String via &mut Token using ref mut
+// fn mutate_ident(tok: &mut Token) {
+//     match tok {
+//         &mut Token::Ident(ref mut s) => {
+//             s.push_str("_mutated");
+//         }
+//         _ => {}
+//     }
+// }
 
-fn main() {
-    println!("-- describe_owned examples --");
-    describe_owned(Token::Number(5));   // prints Small number: 5 (1..=10)
-    describe_owned(Token::Number(8));   // prints Small number: 8 because the 1..=10 arm is first
-    describe_owned(Token::Number(11));  // prints Other (not small, not even)
-    describe_owned(Token::Ident("alice".to_string())); // Identifier: alice
-    describe_owned(Token::Eof);         // End
+// fn main() {
+//     println!("-- describe_owned examples --");
+//     describe_owned(Token::Number(5));   // prints Small number: 5 (1..=10)
+//     describe_owned(Token::Number(8));   // prints Small number: 8 because the 1..=10 arm is first
+//     describe_owned(Token::Number(11));  // prints Other (not small, not even)
+//     describe_owned(Token::Ident("alice".to_string())); // Identifier: alice
+//     describe_owned(Token::Eof);         // End
 
-    println!("\n-- describe_reordered example --");
-    describe_reordered(Token::Number(8)); // prints Even number: 8 because even arm is first
+//     println!("\n-- describe_reordered example --");
+//     describe_reordered(Token::Number(8)); // prints Even number: 8 because even arm is first
 
-    println!("\n-- borrowing and reuse --");
-    let t = Token::Ident("bob".to_string());
-    describe_borrowed(&t); // we pass a reference, so `t` is not moved and can be reused
-    describe_borrowed(&t); // still available
+//     println!("\n-- borrowing and reuse --");
+//     let t = Token::Ident("bob".to_string());
+//     describe_borrowed(&t); // we pass a reference, so `t` is not moved and can be reused
+//     describe_borrowed(&t); // still available
 
-    println!("\n-- mutate via &mut --");
-    let mut t2 = Token::Ident("start".to_string());
-    mutate_ident(&mut t2);    // modifies inner String
-    describe_borrowed(&t2);   // shows mutated value
-}
+//     println!("\n-- mutate via &mut --");
+//     let mut t2 = Token::Ident("start".to_string());
+//     mutate_ident(&mut t2);    // modifies inner String
+//     describe_borrowed(&t2);   // shows mutated value
+// }
 
+
+
+
+
+
+
+// enum Connection {
+//     Disconnected,
+//     Connecting{retries: u32},
+//     Connected{ id: u64},
+//     Closed,
+// }
+
+// impl Connection {
+//     fn next(self)-> Connection{
+//         match self {
+//             Connection :: Disconnected => Conection::Connecting{ retries: 0},
+//             Connectionn:: Connecting {retries} if retries <3 => Connection::Connecting{retries: retries +1},
+//             Connection :: Connecting {...} => Connection::Closed,
+//             Connection ::Connected {id}=> {
+//                 println!("Already connected as {}", id);
+//                 Connection :: Connected {id};
+
+//             }
+//             Connection::Closed => Connection::Disconnected,
+//         }
+//     }
+// }
