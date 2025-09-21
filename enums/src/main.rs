@@ -36,5 +36,24 @@
 //     Handle(answer);
 // }
 
+// fn main (){
+//     let maybe: Option<i32> = Some(7);
 
+
+//   if  let Some(x) = maybe {
+//     println! ("got: {}", x);
+ 
+
+//     // matches! macro (boolean test)
+//     let is_some = matches!(maybe, Some(_));
+//     println!("is_some = {}", is_some);
+
+
+//       // while let: iterate until pattern fails
+//     let mut stack = vec![1, 2, 3];
+//     while let Some(top) = stack.pop() {
+//         println!("popped {}", top);
+//   }
+// }
+// }
 
