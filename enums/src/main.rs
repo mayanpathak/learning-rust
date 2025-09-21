@@ -124,25 +124,25 @@
 
 
 
-enum MaybeRef<'a, T> {
-    Borrowed(&'a T),
-    Owned(T),
-}
+// enum MaybeRef<'a, T> {
+//     Borrowed(&'a T),
+//     Owned(T),
+// }
 
-impl <'a, T> MaybeRef<'a, T>{
-    fn as_ref(&self)-> &T{
-        match self{
-            MaybeRef::Borrowed(r)=> r,
-            MaybeRef::Owned(t)=> t,
-        }
-    }
-}
+// impl <'a, T> MaybeRef<'a, T>{
+//     fn as_ref(&self)-> &T{
+//         match self{
+//             MaybeRef::Borrowed(r)=> r,
+//             MaybeRef::Owned(t)=> t,
+//         }
+//     }
+// }
 
-fn main (){
-    let s = String::from("hello");
-    let borrowed = MaybeRef::Borrowed(&s);
-    let owned = MaybeRef::Owned(String::from("world"));
+// fn main (){
+//     let s = String::from("hello");
+//     let borrowed = MaybeRef::Borrowed(&s);
+//     let owned = MaybeRef::Owned(String::from("world"));
 
-    println!("borrowed: {}", borrowed.as_ref());
-    println!("owned: {}", owned.as_ref());  
-}
+//     println!("borrowed: {}", borrowed.as_ref());
+//     println!("owned: {}", owned.as_ref());  
+// }
