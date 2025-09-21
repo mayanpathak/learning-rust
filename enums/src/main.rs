@@ -57,3 +57,24 @@
 // }
 // }
 
+
+
+#[derive(Debug)]
+
+
+enum TrafficLight { Red, Yellow, Green }
+impl TrafficLight {
+    fn time_to_wait(&self)-> u32{
+        match self {
+            TrafficLight::Red => 60,
+            TrafficLight::Yellow => 5,
+            TrafficLight::Green => 0,
+        }
+    }
+}
+
+
+fn main() {
+    let t = TrafficLight::Red;
+    println!("Wait {}s", t.time_to_wait());
+}
