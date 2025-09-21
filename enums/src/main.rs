@@ -59,22 +59,38 @@
 
 
 
-#[derive(Debug)]
+// #[derive(Debug)]
 
 
-enum TrafficLight { Red, Yellow, Green }
-impl TrafficLight {
-    fn time_to_wait(&self)-> u32{
-        match self {
-            TrafficLight::Red => 60,
-            TrafficLight::Yellow => 5,
-            TrafficLight::Green => 0,
-        }
-    }
+// enum TrafficLight { Red, Yellow, Green }
+// impl TrafficLight {
+//     fn time_to_wait(&self)-> u32{
+//         match self {
+//             TrafficLight::Red => 60,
+//             TrafficLight::Yellow => 5,
+//             TrafficLight::Green => 0,
+//         }
+//     }
+// }
+
+
+// fn main() {
+//     let t = TrafficLight::Red;
+//     println!("Wait {}s", t.time_to_wait());
+
+
+
+
+#[repr(u16)]
+enum HttpStatus {
+    ok = 200,
+    NotFound = 404,
+    InternalServerError = 500,
+
 }
 
-
-fn main() {
-    let t = TrafficLight::Red;
-    println!("Wait {}s", t.time_to_wait());
+fn main (){
+    let s = HttpStatus::NotFound;
+    let code: u16 = s as u16;
+    println!("HTTP Status: {}", code);
 }
