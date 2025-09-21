@@ -146,3 +146,15 @@
 //     println!("borrowed: {}", borrowed.as_ref());
 //     println!("owned: {}", owned.as_ref());  
 // }
+
+enum Token { Number(i32), Ident(String), Eof }
+
+fn describe(tok: Token) {
+    match tok {
+        Token::Number(n @ 1..=10) => println!("Small number: {}", n), // @ binds the matched value
+        Token::Number(n) if n % 2 == 0 => println!("Even number: {}", n), // guard
+        Token::Ident(ref s) => println!("Identifier: {}", s), // ref to avoid taking ownership
+        Token::Eof => println!("End"),
+        _ => println!("Other"),
+    }
+}
