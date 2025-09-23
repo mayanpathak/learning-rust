@@ -47,13 +47,31 @@
 
 
 
-fn main(){
-    let point = (3,7);
+// fn main(){
+//     let point = (3,7);
 
-match point {
-    (0,0) => println!("Origin"),
-    (x,0) => println!("On the x-axis at x = {}", x),
-    (0,y) => println!("On the y-axis at y = {}", y),
-    (x,y) => println!("Point is at ({}, {})", x, y),
+// match point {
+//     (0,0) => println!("Origin"),
+//     (x,0) => println!("On the x-axis at x = {}", x),
+//     (0,y) => println!("On the y-axis at y = {}", y),
+//     (x,y) => println!("Point is at ({}, {})", x, y),
+//     }
+// }
+
+
+enum Parcel {
+    Box,
+    Envelope,
+    Tube,
+}
+
+fn main (){
+    let parcel = Parcel::Envelope;
+
+    match parcel{
+        Parcel::Box => println!("It's a box!"),
+        Parcel::Envelope => println!("It's an envelope!"),
+        Parcel::Tube => println!("It's a tube!"),
     }
+
 }
