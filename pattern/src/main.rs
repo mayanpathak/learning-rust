@@ -59,19 +59,20 @@
 // }
 
 
-enum Parcel {
-    Box,
-    Envelope,
-    Tube,
-}
+// enum Parcel {
+//     Box,
+//     Envelope,
+//     Tube,
+// }
 
-fn main (){
-    let parcel = Parcel::Envelope;
+// fn main (){
+//     let parcel = Parcel::Envelope;
 
-    match parcel{
-        Parcel::Box => println!("It's a box!"),
-        Parcel::Envelope => println!("It's an envelope!"),
-        Parcel::Tube => println!("It's a tube!"),
-    }
+//     match parcel{
+//         Parcel::Box => println!("It's a box!"),
+//         Parcel::Envelope => println!("It's an envelope!"),
+//         Parcel::Tube => println!("It's a tube!"),
+//     }
 
-}
+// }
+
