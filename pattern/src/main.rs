@@ -20,3 +20,17 @@
 //         _ => println!("Midweek days are so-so."),
 //     }
 // }
+
+// fn main (){
+//     let score = 97;
+
+//     match score{
+//         0..=59 => println!("Failing grade"),
+//         60..=69 => println!("Passing grade"),
+//         70..=79 => println!("Average grade"),
+//         80..=89 => println!("Good grade"),
+//         90..=100 => println!("Excellent grade"),
+//         _ => println!("Invalid score"),
+//     }
+// }
+
