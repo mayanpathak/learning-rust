@@ -34,3 +34,13 @@
 //     }
 // }
 
+fn main (){
+    let age = 21;
+    match age {
+        0..=12=> println!("Child"),
+        13..=19 => println!("Teenager"),
+        20..=64 => println!("Adult"),
+        65..=120 => println!("Senior"),
+        n => println!("adult with age {n}", ),
+        }
+}
