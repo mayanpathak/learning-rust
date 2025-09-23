@@ -11,12 +11,12 @@
 // }
 
 
-fn main (){
-    let day = "Saturday";
-    match day {
-        "Monday" => println!("Start of the work week!"),
-        "Friday" => println!("Last day of the work week!"),
-        "Saturday" | "Sunday" => println!("It's the weekend!"),
-        _ => println!("Midweek days are so-so."),
-    }
-}
+// fn main (){
+//     let day = "Saturday";
+//     match day {
+//         "Monday" => println!("Start of the work week!"),
+//         "Friday" => println!("Last day of the work week!"),
+//         "Saturday" | "Sunday" => println!("It's the weekend!"),
+//         _ => println!("Midweek days are so-so."),
+//     }
+// }
