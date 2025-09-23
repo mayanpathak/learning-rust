@@ -34,13 +34,26 @@
 //     }
 // }
 
-fn main (){
-    let age = 21;
-    match age {
-        0..=12=> println!("Child"),
-        13..=19 => println!("Teenager"),
-        20..=64 => println!("Adult"),
-        65..=120 => println!("Senior"),
-        n => println!("adult with age {n}", ),
-        }
+// fn main (){
+//     let age = 21;
+//     match age {
+//         0..=12=> println!("Child"),
+//         13..=19 => println!("Teenager"),
+//         20..=64 => println!("Adult"),
+//         65..=120 => println!("Senior"),
+//         n => println!("adult with age {n}", ),
+//         }
+// }
+
+
+
+fn main(){
+    let point = (3,7);
+
+match point {
+    (0,0) => println!("Origin"),
+    (x,0) => println!("On the x-axis at x = {}", x),
+    (0,y) => println!("On the y-axis at y = {}", y),
+    (x,y) => println!("Point is at ({}, {})", x, y),
+    }
 }
