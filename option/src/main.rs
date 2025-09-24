@@ -27,3 +27,9 @@
 //     let nothing: Option<i32> = None;
 //     // println!("{}", nothing.unwrap()); // 💥 panic!
 // }
+
+
+fn main() {
+    let value = None;
+    println!("Got: {}", value.unwrap_or(42)); // default to 42
+}
