@@ -20,10 +20,10 @@
 // }
 
 
-fn main() {
-    let value = Some(10);
-    println!("Value is: {}", value.unwrap()); // prints 10
+// fn main() {
+//     let value = Some(10);
+//     println!("Value is: {}", value.unwrap()); // prints 10
 
-    let nothing: Option<i32> = None;
-    // println!("{}", nothing.unwrap()); // 💥 panic!
-}
+//     let nothing: Option<i32> = None;
+//     // println!("{}", nothing.unwrap()); // 💥 panic!
+// }
