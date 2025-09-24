@@ -29,7 +29,7 @@
 // }
 
 
-fn main() {
-    let value = None;
-    println!("Got: {}", value.unwrap_or(42)); // default to 42
-}
+// fn main() {
+//     let value = None;
+//     println!("Got: {}", value.unwrap_or(42)); // default to 42
+// }
