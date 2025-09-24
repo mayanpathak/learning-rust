@@ -33,3 +33,38 @@
 //     let value = None;
 //     println!("Got: {}", value.unwrap_or(42)); // default to 42
 // }
+
+
+
+// fn devide (a: i34, b:32)-> Result<i32, &'static str> {
+//     if b == 0{
+//         Err("cannot devide by zero")
+
+//     } else {
+//         Ok(a/b)
+//     }
+// }
+
+
+// fn main (){
+//     match devide (10, 2){
+//         Ok (Result)=> println!("Result: {}", Result),
+//         Err (e) => println!("Error: {}", e),
+//     }
+// }
+
+
+fn divide(a: i32, b: i32) -> Result<i32, &'static str> {
+    if b == 0 {
+        Err("Cannot divide by zero")
+    } else {
+        Ok(a / b)
+    }
+}
+
+fn main() {
+    match divide(10, 2) {
+        Ok(result) => println!("Result: {}", result),
+        Err(e) => println!("Error: {}", e),
+    }
+}
