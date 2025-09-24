@@ -93,3 +93,19 @@
 //         Message::Write(text) => println!("Writing: {}", text),
 //     }
 // }
+
+enum Shape {
+    Rectangle { width: i32, height: i32 },
+    Circle(i32),
+}
+
+fn main() {
+    let shape = Shape::Rectangle { width: 10, height: 20 };
+
+    match shape {
+        Shape::Rectangle { width, height } => {
+            println!("Rectangle {width}x{height}");
+        }
+        Shape::Circle(r) => println!("Circle with radius {r}"),
+    }
+}
