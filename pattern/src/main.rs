@@ -122,18 +122,30 @@
 // }
 
 
-fn process_delivery(result: Result<Option<i32>, String>) {
-    match result {
-        Ok(Some(weight)) if weight > 10 => println!("Heavy parcel: {weight}kg 🚚"),
-        Ok(Some(weight)) => println!("Light parcel: {weight}kg 📦"),
-        Ok(None) => println!("Empty parcel ❌"),
-        Err(e) => println!("Delivery failed: {e} ⚠️"),
-    }
-}
+// fn process_delivery(result: Result<Option<i32>, String>) {
+//     match result {
+//         Ok(Some(weight)) if weight > 10 => println!("Heavy parcel: {weight}kg 🚚"),
+//         Ok(Some(weight)) => println!("Light parcel: {weight}kg 📦"),
+//         Ok(None) => println!("Empty parcel ❌"),
+//         Err(e) => println!("Delivery failed: {e} ⚠️"),
+//     }
+// }
 
-fn main() {
-    process_delivery(Ok(Some(12)));
-    process_delivery(Ok(Some(5)));
-    process_delivery(Ok(None));
-    process_delivery(Err("Address not found".into()));
+// fn main() {
+//     process_delivery(Ok(Some(12)));
+//     process_delivery(Ok(Some(5)));
+//     process_delivery(Ok(None));
+//     process_delivery(Err("Address not found".into()));
+// }
+
+
+// enum Option<T> {
+//     Some(T),
+//     None,
+// }
+
+
+
+fn main (){
+    println!("Hello, world!");
 }
