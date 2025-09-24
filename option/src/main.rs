@@ -9,3 +9,12 @@
 //     println!("Number: {:?}", maybe_number);
 //     println!("Nothing: {:?}", maybe_nothing);
 // }
+
+fn main() {
+    let gift: Option<&str> = Some("Toy Car");
+
+    match gift {
+        Some(item) => println!("You got a {}", item),
+        None => println!("The box is empty"),
+    }
+}
