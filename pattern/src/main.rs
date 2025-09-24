@@ -94,18 +94,29 @@
 //     }
 // }
 
-enum Shape {
-    Rectangle { width: i32, height: i32 },
-    Circle(i32),
-}
+// enum Shape {
+//     Rectangle { width: i32, height: i32 },
+//     Circle(i32),
+// }
+
+// fn main() {
+//     let shape = Shape::Rectangle { width: 10, height: 20 };
+
+//     match shape {
+//         Shape::Rectangle { width, height } => {
+//             println!("Rectangle {width}x{height}");
+//         }
+//         Shape::Circle(r) => println!("Circle with radius {r}"),
+//     }
+// }
+
 
 fn main() {
-    let shape = Shape::Rectangle { width: 10, height: 20 };
+    let number = 7;
 
-    match shape {
-        Shape::Rectangle { width, height } => {
-            println!("Rectangle {width}x{height}");
-        }
-        Shape::Circle(r) => println!("Circle with radius {r}"),
+    match number {
+        n if n % 2 == 0 => println!("{n} is even"),
+        n if n % 2 != 0 => println!("{n} is odd"),
+        _ => println!("Unknown"),
     }
 }
