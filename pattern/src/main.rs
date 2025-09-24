@@ -111,12 +111,29 @@
 // }
 
 
-fn main() {
-    let number = 7;
+// fn main() {
+//     let number = 7;
 
-    match number {
-        n if n % 2 == 0 => println!("{n} is even"),
-        n if n % 2 != 0 => println!("{n} is odd"),
-        _ => println!("Unknown"),
+//     match number {
+//         n if n % 2 == 0 => println!("{n} is even"),
+//         n if n % 2 != 0 => println!("{n} is odd"),
+//         _ => println!("Unknown"),
+//     }
+// }
+
+
+fn process_delivery(result: Result<Option<i32>, String>) {
+    match result {
+        Ok(Some(weight)) if weight > 10 => println!("Heavy parcel: {weight}kg 🚚"),
+        Ok(Some(weight)) => println!("Light parcel: {weight}kg 📦"),
+        Ok(None) => println!("Empty parcel ❌"),
+        Err(e) => println!("Delivery failed: {e} ⚠️"),
     }
+}
+
+fn main() {
+    process_delivery(Ok(Some(12)));
+    process_delivery(Ok(Some(5)));
+    process_delivery(Ok(None));
+    process_delivery(Err("Address not found".into()));
 }
