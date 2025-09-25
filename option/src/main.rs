@@ -70,4 +70,12 @@
 // }
 
 
+// use std::fs::File;
+// use std::io::{self, Read};
 
+// fn read_file()-> Result <String, io::Error>
+// {
+//     let mut file = File::open ("hello.txt")?;
+//     let mut contents = String::new();
+    
+// }
