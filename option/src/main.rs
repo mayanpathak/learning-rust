@@ -79,3 +79,7 @@
 //     let mut contents = String::new();
     
 // }
+
+fn main (){
+    println!("hello world");
+}
