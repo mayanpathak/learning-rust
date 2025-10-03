@@ -35,17 +35,17 @@
 
 
 
-use std ::{rc::Rc, cell::RefCell};
-fn main (){
-    let counter = Rc::new(RefCell::new(0));
-    let c1 = Rc::clone(&counter);
-    let c2 = Rc::clone(&counter);
+// use std ::{rc::Rc, cell::RefCell};
+// fn main (){
+//     let counter = Rc::new(RefCell::new(0));
+//     let c1 = Rc::clone(&counter);
+//     let c2 = Rc::clone(&counter);
 
 
-    *c1.borrow_mut()+=1;
-        *c2.borrow_mut() += 10;
+//     *c1.borrow_mut()+=1;
+//         *c2.borrow_mut() += 10;
 
-     println!("counter = {}", *counter.borrow()); // prints 11
-    println!("strong_count = {}", Rc::strong_count(&counter)); // prints 3
+//      println!("counter = {}", *counter.borrow()); // prints 11
+//     println!("strong_count = {}", Rc::strong_count(&counter)); // prints 3
 
-}
+// }
