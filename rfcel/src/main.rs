@@ -49,3 +49,7 @@
 //     println!("strong_count = {}", Rc::strong_count(&counter)); // prints 3
 
 // }
+
+fn main (){
+    println!("Hello, world!");
+}
